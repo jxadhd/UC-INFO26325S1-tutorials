@@ -67,23 +67,28 @@
 <p>Like Python and Visual Basic, PHP has if, else and elseif. The boolean operators in PHP are:<br>|| OR<br>&& AND
 <br>! NOT</p>
 <?php
-    function FizzBuzz($num){
-        if ($num % 3 == 0){
+    function FizzBuzz($num)
+    {
+        $result = Null;
+        if ($num % 3 == 0)
+        {
             if ($num % 5 == 0){
-                return "FizzBuzz";
+                $result = "FizzBuzz";
             }
             else{
-                return "Fizz";
+                $result = "Fizz";
             }
         }
-        elseif ($num % 5 == 0){
-            if ($num % 3 == 0){
-                return "FizzBuzz";
+        elseif ($num % 5 == 0)
+        {
+            if ($num % 3 == 0) {
+                $result = "FizzBuzz";
             }
-            else{
-                return "Buzz";
+            else {
+                $result = "Buzz";
             }
         }
+    return $result;
     }
     echo FizzBuzz(15) . " " . FizzBuzz(9);
 ?>
@@ -91,14 +96,19 @@
 <h2>Using switch statements</h2>
 <?php
     function FizzBuzzRev($num){
+        $result = Null;
         switch (true){
             case ($num % 3 == 0 && $num % 5 == 0):
-                return "FizzBuzz";
+                $result = "FizzBuzz";
+                break;
             case ($num % 3 == 0):
-                return "Fizz";
+                $result = "Fizz";
+                break;
             case ($num % 5 == 0):
-                return "Buzz";
+                $result = "Buzz";
+                break;
         }
+        return $result;
     }
     echo FizzBuzzRev(15) . " " . FizzBuzzRev(9);
 ?>
