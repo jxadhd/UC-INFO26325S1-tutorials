@@ -53,6 +53,56 @@
 ?>
 
 <h2>Variable Scoping</h2>
+<?php
+    $x = 2;
+    function doStuff(){
+        $x = 5;
+        echo $x . "<br />";
+    }
+    echo "At this level, x is: " . doStuff();
+    echo "But at this one, it's " . $x;
+?>
+
+<h2>Understanding Conditionals</h2>
+<p>Like Python and Visual Basic, PHP has if, else and elseif. The boolean operators in PHP are:<br>|| OR<br>&& AND
+<br>! NOT</p>
+<?php
+    function FizzBuzz($num){
+        if ($num % 3 == 0){
+            if ($num % 5 == 0){
+                return "FizzBuzz";
+            }
+            else{
+                return "Fizz";
+            }
+        }
+        elseif ($num % 5 == 0){
+            if ($num % 3 == 0){
+                return "FizzBuzz";
+            }
+            else{
+                return "Buzz";
+            }
+        }
+    }
+    echo FizzBuzz(15) . " " . FizzBuzz(9);
+?>
+
+<h2>Using switch statements</h2>
+<?php
+    function FizzBuzzRev($num){
+        switch (true){
+            case ($num % 3 == 0 && $num % 5 == 0):
+                return "FizzBuzz";
+            case ($num % 3 == 0):
+                return "Fizz";
+            case ($num % 5 == 0):
+                return "Buzz";
+        }
+    }
+    echo FizzBuzzRev(15) . " " . FizzBuzzRev(9);
+?>
+
 
 </body>
 
