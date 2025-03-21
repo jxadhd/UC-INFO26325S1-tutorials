@@ -11,7 +11,7 @@
         <!-- Cannot find username cookie, display login form -->
         <p>Login with your username and password.</p>
 
-        <form action="post.php" method="get">
+        <form action="post.php" method="post">
             <label for="input-username">Username:</label>
             <input id="input-username" type="text" name="username" value="">
             <br />
@@ -22,13 +22,16 @@
         </form>
 
         <?php if (isset($_POST['username']) && isset($_POST['password'])): ?>
-            <?php if (login_user(htmlentities($_POST["username"]), $_POST["password"])): ?>
-                <!-- 4b - Complete this section -->
-            <?php endif; ?>
-
-            <?php if (authenticate(htmlentities($_POST["username"]), $_POST["password"])): ?>
-                <!-- 4b - Complete this section  -->
-            <?php endif; ?>
+            <?php if (login_user(htmlentities($_POST["username"]), $_POST["password"])) {
+                # <!-- 4b - Complete this section -->
+                echo "Welcome back!";
+            }
+            else if (authenticate(htmlentities($_POST["username"]), $_POST["password"])){
+                echo "Welcome back!";
+            }
+            else {
+                echo "Access denied!";
+            } ?>
         <?php endif; ?>
 
     <?php endif; ?>
@@ -43,10 +46,16 @@
     function login_user($username, $password) {
         $server_user = "superman";
         $server_pass = "Kryptonite";
+        $login = boolval(false);
 
         // 4b - complete this function
-        
-        return false;
+        if ($username == $server_user && $password == $server_pass) {
+            return true;
+        }
+        else {
+            return false;
+        }
+
     }
 
     /**
@@ -55,7 +64,7 @@
      * @param $pass String password we are trying to use to authenticate.
      */
     function authenticate($user, $pass) {
-        require_once "Credentials.php";
+        include("Credentials.php");
         $credentials1 = new Credentials("batman", "bruce");
         $credentials2 = new Credentials("spiderman", "peter_parker");
         $credentials3 = new Credentials("ethan-hunt", "impossible");
@@ -63,9 +72,13 @@
         $credentialsArray = array($credentials1, $credentials2, $credentials3, $credentials4);
 
         // 4c - Complete this function
-        // 5 - Store the cookie
-
-        return false;
+        foreach ($credentialsArray as $credential) {
+            if ($credential->validate($user, $pass)) {
+                // 5 - Store the cookie
+                setcookie('username', $user);
+                return true;
+            }
+        }
     }
     ?>
 

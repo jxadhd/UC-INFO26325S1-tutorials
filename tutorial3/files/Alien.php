@@ -1,15 +1,9 @@
 <?php
-/**
- * Created by PhpStorm.
- * User: kirill
- * Date: 29/07/18
- * Time: 11:11 PM
- */
 
 class Alien extends Species
 {
-    private $spaceship_name;
-    private $laser_name;
+    private string $spaceship_name;
+    private string $laser_name;
 
     /**
      * Alien constructor.
@@ -21,14 +15,21 @@ class Alien extends Species
     public function __construct($species_name, $species_age, $spaceship_name, $laser_name)
     {
         // BEGIN EXERCISE 7b
+        parent::__construct($species_name, $species_age);
+        $this->spaceship_name = $spaceship_name;
+        $this->laser_name = $laser_name;
     }
 
     /**
-     * @return mixed
+     * @return string
      */
     public function getSpaceshipName()
     {
         return $this->spaceship_name;
+    }
+
+    public function getLaserName(){
+        return $this->laser_name;
     }
 
     /**
@@ -44,7 +45,7 @@ class Alien extends Species
      * This makes the alien to a BIG alien jump.
      */
     public function jump() {
-        echo $this->getName() . " has just done a BIG alien jump!";
+        echo $this->getName() . " has just done a BIG alien jump! <br>";
     }
 
     /**

@@ -7,10 +7,9 @@
  */
 
 // EXERCISE 7a
-class Person
+include "Species.php";
+class Person extends Species
 {
-    private $name;
-    private $age;
     private $favourite_colour;
 
     /**
@@ -21,9 +20,8 @@ class Person
      */
     public function __construct($person_name, $person_age, $person_colour)
     {
-        $this->name = $person_name;
-        $this->age = $person_age;
         $this->favourite_colour = $person_colour;
+        parent::__construct($person_name, $person_age);
     }
 
     /**
@@ -92,6 +90,6 @@ class Person
      * Concrete implementation of the jump method from the Species parent class.
      */
     public function jump() {
-        echo $this->getName() . " has done a measly human jump :(";
+        echo $this->getName() . " has done a measly human jump :( <br>";
     }
 }

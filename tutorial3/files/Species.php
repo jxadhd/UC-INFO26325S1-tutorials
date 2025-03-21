@@ -5,13 +5,12 @@
  * Date: 29/07/18
  * Time: 11:07 PM
  */
-
 abstract class Species
 {
-    private $name;
-    private $age;
+    protected $name;
+    protected $age;
 
-    function __construct($species_name, $species_age)
+    public function __construct($species_name, $species_age)
     {
         $this->name = $species_name;
         $this->age = $species_age;

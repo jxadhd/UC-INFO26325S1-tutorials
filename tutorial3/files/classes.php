@@ -1,15 +1,18 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
+
     <title>Classes in PHP</title>
 </head>
 <body>
     <h1>Classes</h1>
 
     <?php
-    include_once "Person.php";
+    #error_reporting(E_ALL);
+    #ini_set('display_errors', 1);
+    include "Person.php";
+    include "Alien.php";
     // EXERCISE 7b
-
     // All People
     $person1 = new Person("John", 21, "Green");
     $person2 = new Person("Sally", 24, "Yellow");
@@ -42,7 +45,7 @@
     print_people($people);
     echo "<br />";
 
-    // Batman and patrick eat a 'Carrot' and some 'French Fries
+    // Batman and patrick eat a 'Carrot' and some 'French Fries'
     $person5->eatFood("Carrot");
     echo "<br />";
     $person4->eatFood("French Fries");
@@ -52,21 +55,31 @@
     echo "Exercise 7b<br />";
     echo "----------------<br />";
     // Fire the laser.
+    $alien1->fireLaser(1);
     // Then fly away in your spaceship.
 
     echo "<br />";
     echo "Exercise 7c<br />";
     echo "----------------<br />";
     function print_aliens($aliens) {
-        // TODO
+        foreach ($aliens as $alien) {
+            echo "{$alien->getName()}, {$alien->getAge()}, {$alien->getLaserName()}, {$alien->getSpaceshipName()} <br>";
+        }
     }
+    print_aliens($aliens);
 
     echo "<br />";
     echo "Exercise 8<br />";
     echo "-------------------<br />";
     function make_all_species_jump($people, $aliens) {
-        // TODO
+        foreach($people as $person) {
+            $person->jump();
+        }
+        foreach($aliens as $alien) {
+            $alien->jump();
+        }
     }
+    make_all_species_jump($people, $aliens);
     ?>
 </body>
 </html>
